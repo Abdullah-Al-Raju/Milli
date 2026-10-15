@@ -1,0 +1,7 @@
+# Temp extracted debug frames
+frame_*.png
+baseline_*.png
+transient_*.png
+.DS_Store
+*.pyc
+__pycache__/

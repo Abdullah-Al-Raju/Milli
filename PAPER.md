@@ -116,7 +116,7 @@ Visual dynamics decompose into three mathematically orthogonal primitives:
 
 The static base manifold isolates the spatial geometry where the temporal partial derivative vanishes:
 
-$$\mathcal{S}(x, y) = \left\{ F(x, y, t) \;\middle|\; \lim_{\Delta t \to 0} \left\| \frac{\partial F(x, y, t)}{\partial t} \right\| < \epsilon_s \right\}$$
+$$\mathcal{S}(x, y) = \left\{ F(x, y, t) \mid \lim_{\Delta t \to 0} \left| \frac{\partial F(x, y, t)}{\partial t} \right| < \epsilon_s \right\}$$
 
 To preserve sharp high-frequency edges without grid discretization, $\mathcal{S}(x,y)$ is projected onto a harmonic Fourier basis $\gamma: [0,1]^2 \to \mathbb{R}^{2d}$:
 

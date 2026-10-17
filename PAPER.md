@@ -116,7 +116,9 @@ Visual dynamics decompose into three mathematically orthogonal primitives:
 
 The static base manifold isolates the spatial geometry where the temporal partial derivative vanishes:
 
-$$\mathcal{S}(x, y) = \left\{ F(x, y, t) \mid \lim_{\Delta t \to 0} \left| \frac{\partial F(x, y, t)}{\partial t} \right| < \epsilon_s \right\}$$
+$$
+\mathcal{S}(x, y) = \left\lbrace F(x, y, t) \;\middle|\; \lim_{\Delta t \to 0} \left\Vert \frac{\partial F(x, y, t)}{\partial t} \right\Vert < \epsilon_s \right\rbrace
+$$
 
 To preserve sharp high-frequency edges without grid discretization, $\mathcal{S}(x,y)$ is projected onto a harmonic Fourier basis $\gamma: [0,1]^2 \to \mathbb{R}^{2d}$:
 
@@ -260,7 +262,7 @@ For dense user interfaces (such as $12 \times 12\text{px}$ close buttons or text
 
 Milli derives target coordinates analytically. Object boundaries correspond to the zero-crossings of the spatial Hessian tensor $\mathcal{H}_F$:
 
-$$\mathbf{x}^* = \{\mathbf{x} \mid \nabla F(\mathbf{x}) = \mathbf{0}, \; \det(\mathcal{H}_F(\mathbf{x})) > 0\}, \quad \mathcal{H}_F = \begin{bmatrix} I_{xx} & I_{xy} \\ I_{yx} & I_{yy} \end{bmatrix}$$
+$$\mathbf{x}^* = \lbrace \mathbf{x} \mid \nabla F(\mathbf{x}) = \mathbf{0}, \; \det(\mathcal{H}_F(\mathbf{x})) > 0 \rbrace, \quad \mathcal{H}_F = \begin{bmatrix} I_{xx} & I_{xy} \\ I_{yx} & I_{yy} \end{bmatrix}$$
 
 Solving via local Newton-Raphson iterations directly on GPU thread-groups yields analytical boundary localization down to $\le 0.082\text{ pixels}$, an $85\times$ improvement in spatial resolution.
 

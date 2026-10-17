@@ -94,7 +94,7 @@ $$I_x = \frac{\partial F}{\partial x}, \quad I_y = \frac{\partial F}{\partial y}
 ### Analytical Sub-Pixel Localization vs. Patch Quantization Jitter
 Vision Transformers discretizing space into $14 \times 14$ patches incur a spatial quantization jitter bounded by $\sigma_{\text{ViT}} = \pm \frac{P}{2} = \pm 7.0\text{px}$. Milli solves element boundaries analytically via the spatial Hessian tensor zero-crossings:
 
-$$\mathbf{x}^* = \{\mathbf{x} \mid \nabla F(\mathbf{x}) = \mathbf{0}, \; \det(\mathcal{H}_F(\mathbf{x})) > 0\}, \quad \mathcal{H}_F = \begin{bmatrix} I_{xx} & I_{xy} \\ I_{yx} & I_{yy} \end{bmatrix}$$
+$$\mathbf{x}^* = \lbrace \mathbf{x} \mid \nabla F(\mathbf{x}) = \mathbf{0}, \; \det(\mathcal{H}_F(\mathbf{x})) > 0 \rbrace, \quad \mathcal{H}_F = \begin{bmatrix} I_{xx} & I_{xy} \\ I_{yx} & I_{yy} \end{bmatrix}$$
 
 Solving via local Newton-Raphson iterations on GPU thread-groups achieves spatial localization down to $\le 0.082\text{px}$ ($85\times$ precision gain over patch snapping).
 

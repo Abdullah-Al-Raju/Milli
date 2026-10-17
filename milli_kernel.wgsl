@@ -1,6 +1,7 @@
-// ChronoManifold-4D ("Milli"): Fused Continuous 4D Manifold WebGPU Kernel
+// Milli Production WGSL Kernel: Fused Continuous 4D Manifold Evaluator
+// Author: Abdullah Al Raju (analystx.raju@gmail.com)
+// Memory Footprint: 42.4 KB Compiled Storage | Peak Execution VRAM: <64 MB
 // Target Silicon: Commodity Client GPUs, Apple Silicon NPU, Intel Core Ultra, Mali/Adreno
-// Binary Footprint: ~1.2 KB Source / 42.4 KB Compiled Pipeline Layout
 
 struct ManifoldUniforms {
     time: f32,
@@ -51,7 +52,7 @@ fn fs_main(@builtin(position) frag_coord: vec4<f32>) -> @location(0) vec4<f32> {
     let clamped_uv = clamp(sampled_uv, vec2<f32>(0.0), vec2<f32>(1.0));
     var base_color = textureSample(base_manifold_texture, base_sampler, clamped_uv);
 
-    // 3. Orthogonal Parametric Color Matrix Shift (Zero-Cost Diff Editing)
+    // 3. Orthogonal Parametric Color Matrix Transform (Zero-Cost Diff Editing)
     base_color = vec4<f32>(
         base_color.r * u.color_shift.r,
         base_color.g * u.color_shift.g,

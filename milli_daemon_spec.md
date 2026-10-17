@@ -60,9 +60,14 @@ The `milli-daemon` is a zero-dependency background system process designed for a
 1. **Sobel Differential Pass:** Runs $3\times3\times2$ spatio-temporal convolution kernel to compute $I_x = \frac{\partial F}{\partial x}$, $I_y = \frac{\partial F}{\partial y}$, and $I_t = \frac{\partial F}{\partial t}$.
 2. **Static Masking:** Pixels where $|I_t| \le \epsilon_{\text{static}}$ are tagged as part of $\mathcal{S}(x,y)$.
 3. **Continuous Motion Fitting:** Active areas ($|I_t| > \epsilon_{\text{static}}$) are fitted to low-degree B-splines using least-squares gradient descent on client compute registers.
-4. **Adaptive Event Filter:** Computes residual field norm:
-   $$\Theta_{\text{event}} = \iint_{\Omega} \left| F(x,y,t) - \mathcal{S}\left((x,y) - \int_0^t \mathbf{v} d\tau\right) \right|^2 dx \, dy$$
-   If $\Theta_{\text{event}} > \tau$, an 18-token event envelope is constructed with bounding coordinates and spectral fingerprint.
+4. **Adaptive Event Filter & Dual-Threshold State Machine:**
+   Computes the global residual energy functional over the visual domain:
+   $$E_\delta(t) = \iint_{[0, 1]^2} \|\delta(x, y, t)\|_2^2 \, dx \, dy$$
+   where $\delta(x, y, t) = F(x, y, t) - \mathcal{S}\left((x, y) - \int_0^t \mathbf{v} \, d\tau\right)$.
+
+   State transitions are dispatched via dual thresholds:
+   * **Transient Event Alert ($\Theta_{\text{event}} < E_\delta(t) \le \Theta_{\text{critical}}$):** When an anomaly occurs, an 18-token envelope is constructed with exact sub-millisecond timestamp $t^*$, spatial bounding coordinates, and $L_2$ norm.
+   * **Adaptive Key-Manifold Refresh (AKMR, $E_\delta(t) > \Theta_{\text{critical}}$):** If the structural baseline undergoes significant topological change, the engine executes an AKMR cycle. The base manifold $\mathcal{S}$ re-anchors to the new scene state, transmitting a localized Fourier spectrum update (778 tokens) without resetting historical motion splines.
 
 ### 2.3. Token Serialization Format (Standard JSON Stream over IPC)
 The daemon emits a lightweight stream over `/var/run/milli.sock`:
@@ -124,4 +129,38 @@ where:
    $$\begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix} = \begin{pmatrix} s \cos \phi & -s \sin \phi & c_x - s(\cos\phi \cdot a_x - \sin\phi \cdot a_y) \\ s \sin \phi & s \cos \phi & c_y - s(\sin\phi \cdot a_x + \cos\phi \cdot a_y) \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}$$
 4. Vectorized Sub-box Integer Alpha Transport:
    Evaluated strictly within the compact bounding box $[y_{\min}:y_{\max}, x_{\min}:x_{\max}]$, executing at $>40\text{ FPS}$ on single-thread commodity CPU silicon.
+
+---
+
+## 5. Practical Ecosystem Applications
+
+```
+                                   MILLI ECOSYSTEM
+                                   
+   ┌─────────────────────────────────┬─────────────────────────────────┐
+   │ 1. 24/7 Desktop OS Automation   │ 2. Visual Web Scraping & RPA    │
+   │ • Constant 15-20 tokens/sec     │ • Bypasses obfuscated DOMs      │
+   │ • Zero context window crashes   │ • Sub-pixel topological bounds  │
+   │ • Runs locally on consumer NPUs │ • 60 FPS real-time extraction   │
+   ├─────────────────────────────────┼─────────────────────────────────┤
+   │ 3. Automated Bug Reproduction   │ 4. Ultra-Low-Bandwidth Drones   │
+   │ • Isolates 16ms render glitches │ • Transmits spline vectors      │
+   │ • Pinpoints exact t* timestamps │ • Operates over 3G/Satellite    │
+   │ • Emits 18-token reproduction   │ • Bypasses heavy video streams  │
+   └─────────────────────────────────┴─────────────────────────────────┘
+```
+
+1. **24/7 Desktop OS Automation:** Desktop interfaces consist primarily of static elements punctuated by localized text entries and cursor translations. Milli encodes the interface once, streaming subsequent interactions at 15–20 tokens/sec. A 3B local model can monitor an operating system continuously without memory exhaustion.
+2. **Visual Web Scraping and RPA:** Modern web applications frequently use shadow DOMs, randomized CSS class names, and HTML5 canvas renders to inhibit scraping. Milli operates purely in coordinate space, navigating and extracting data based on geometric topology and analytical edge boundaries.
+3. **Automated Bug Diagnostics:** When web applications drop frames or glitch, Milli isolates the transient spike $\delta(t)$ at the exact sub-millisecond timestamp, transmitting an 18-token event envelope directly to coding models for automated patch generation.
+4. **Low-Bandwidth Robotics Telemetry:** Edge drones and robotic platforms fit visual inputs to the manifold locally, transmitting lightweight velocity splines over low-bandwidth satellite links rather than streaming high-bitrate video.
+
+---
+
+## 6. Theoretical Boundaries & Limitations
+
+1. **Aperture Ill-Conditioning in Low-Texture Regions:** In spatial regions where the gradient magnitude vanishes ($\|\nabla F\|^2 \approx 0$, e.g., solid walls or blank screens), optical conservation is ill-conditioned. While Tikhonov regularization preserves stability by relying on neighboring splines, the recovered velocity defaults to the regularizer's smoothness prior.
+2. **High-Frequency Turbulent Dynamics:** Fluid flows, smoke, and complex particle systems require higher-order spline bases ($K > 64$), which increases token transmission rates to ~45 tokens/sec.
+3. **Transducer Alignment for Generalist VLMs:** Generalist vision models are pre-trained on discrete ViT patch embeddings. To ingest Milli's continuous spline representations, off-the-shelf VLMs require a lightweight projection adapter (e.g., an MLP or Perceiver resampler) trained on continuous coordinate data.
+
 

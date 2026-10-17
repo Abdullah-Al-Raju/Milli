@@ -98,3 +98,30 @@ The daemon emits a lightweight stream over `/var/run/milli.sock`:
 ### Phase 3: Edge LLM Direct Integration
 - Connect `milli-daemon` to local quantized edge vision models (e.g. Qwen-2.5-VL-3B via `llama.cpp` or `vLLM`).
 - Enables continuous OS agent automation (cursor control, form filling, visual regression testing) using $<60\text{ MB}$ VRAM and consuming $<15\text{ W}$ package power.
+
+---
+
+## 4. Mathematical Formulation: Multi-Scene Narrative Decomposition & Real-Time Manifold Synthesis
+
+### 4.1. Narrative Shot Boundary Transduction
+To deconstruct multi-scene continuous visual streams into discrete continuous manifolds with zero frame dropping:
+$$\Theta_{\text{event}}(t) = \frac{1}{|\Omega|} \iint_{\Omega} \left| \frac{\partial F}{\partial t}(x, y, t) \right|^2 dx \, dy$$
+$$D_{\text{spectral}}(t_1, t_2) = \frac{\sum_i (H_{t_1}(i) - \bar{H}_{t_1})(H_{t_2}(i) - \bar{H}_{t_2})}{\sqrt{\sum_i (H_{t_1}(i) - \bar{H}_{t_1})^2 \sum_i (H_{t_2}(i) - \bar{H}_{t_2})^2}}$$
+
+A narrative scene cut $\mathcal{C}_k$ is triggered when the joint spatiotemporal shock pulse satisfies:
+$$\left( \Theta_{\text{event}}(t) > \tau_{\Theta} \right) \quad \land \quad \left( D_{\text{spectral}}(t, t - \Delta t) < \tau_H \right)$$
+
+### 4.2. Layered Multi-Manifold Infilling & Character Transmutation
+For each scene shot $\mathcal{S}_k$, the frame $F(x, y, t)$ is factored into static environment base, dynamic subject manifold, and foreground occlusion prop:
+$$F(x,y,t) = \alpha_{\text{prop}}(x,y,t) \cdot \mathcal{S}_{\text{prop}} + (1 - \alpha_{\text{prop}}) \cdot \left[ \alpha_{\text{subj}} \cdot \mathcal{S}_{\text{subj}}\left(\Phi_{\text{subj}}(\mathbf{x} - \mathbf{v}t; \mathbf{\theta}(t))\right) + (1 - \alpha_{\text{subj}}) \cdot \mathcal{S}_{\text{env}} \right] + \delta(x,y,t)$$
+
+where:
+1. $\mathcal{S}_{\text{env}}$ is the infilled static plate isolating the background with subject removed:
+   $$\mathcal{S}_{\text{env}}(x, y) = \text{median}_{t \in \mathcal{S}_k} \left\{ F(x, y, t) \mid \left| \frac{\partial F}{\partial t} \right| \le \epsilon_{\text{static}} \right\}$$
+2. $\mathcal{P}(\mathbf{\theta}(t))$ is the discrete 3D turnaround manifold selector:
+   $$\mathcal{S}_{\text{subj}} = \begin{cases} \mathcal{S}_{\text{front}} & \text{if } |\text{yaw}| \le 25^\circ \land \text{pitch} \ge -15^\circ \\ \mathcal{S}_{\text{profile}} & \text{if } |\text{yaw}| > 25^\circ \lor \text{shot is side-angle} \\ \mathcal{S}_{\text{top\_back}} & \text{if } \text{pitch} < -20^\circ \lor \text{head bent downwards} \end{cases}$$
+3. $\mathbf{M}(\mathbf{\theta}(t))$ projects the character manifold with affine coordinate transport:
+   $$\begin{pmatrix} x' \\ y' \\ 1 \end{pmatrix} = \begin{pmatrix} s \cos \phi & -s \sin \phi & c_x - s(\cos\phi \cdot a_x - \sin\phi \cdot a_y) \\ s \sin \phi & s \cos \phi & c_y - s(\sin\phi \cdot a_x + \cos\phi \cdot a_y) \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}$$
+4. Vectorized Sub-box Integer Alpha Transport:
+   Evaluated strictly within the compact bounding box $[y_{\min}:y_{\max}, x_{\min}:x_{\max}]$, executing at $>40\text{ FPS}$ on single-thread commodity CPU silicon.
+

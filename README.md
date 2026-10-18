@@ -1,6 +1,7 @@
 # Milli: Continuous Spatiotemporal Manifold Engine for Token-Efficient Visual Intelligence
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23449694.svg)](https://doi.org/10.5281/zenodo.23449694)
+[![Under Review](https://img.shields.io/badge/Under%20Review-The%20Visual%20Computer%20(Springer%20Nature)-blue.svg)](https://www.springer.com/journal/371)
 [![Paper PDF](https://img.shields.io/badge/Paper-PDF-red.svg)](milli_paper.pdf)
 [![LaTeX Source](https://img.shields.io/badge/LaTeX-Source-blue.svg)](milli_paper.tex)
 [![Full Paper Markdown](https://img.shields.io/badge/Paper-Markdown-green.svg)](PAPER.md)
@@ -10,7 +11,8 @@
 **Author:** Abdullah Al Raju  
 **Contact:** analystx.raju@gmail.com  
 **Classification:** Systems Architecture & Computer Vision  
-**Permanent DOI:** [10.5281/zenodo.23449694](https://doi.org/10.5281/zenodo.23449694)  
+**Publication Status:** Under Review at *The Visual Computer* (Springer Nature)  
+**Permanent Preprint DOI:** [10.5281/zenodo.23449694](https://doi.org/10.5281/zenodo.23449694)  
 **Publication Manuscript:** [`milli_paper.pdf`](milli_paper.pdf) | [`milli_paper.tex`](milli_paper.tex) | [`PAPER.md`](PAPER.md)  
 **Locked Benchmark Artifact:** `Video by theballsimulator [DecsCniIhKj].mp4`  
 **SHA-256 Hash:** `8fd2189bb4c7e9838756248bc99e9dba1e9826e585ac8403028a6efc51d0d08c`  
@@ -145,11 +147,16 @@ Evaluating the initial benchmark segment ($t = 0.0\text{ s}$ to $15.0\text{ s}$,
 
 ## Citation
 
+If you find Milli useful in your research, please cite the preprint:
+
 ```bibtex
 @article{raju2026milli,
   title={Milli: Continuous Spatiotemporal Manifold Engine for Token-Efficient Visual Intelligence},
   author={Raju, Abdullah Al},
-  journal={Working Paper},
-  year={2026}
+  journal={Preprint at Zenodo},
+  year={2026},
+  doi={10.5281/zenodo.23449694},
+  url={https://doi.org/10.5281/zenodo.23449694},
+  note={Under review at The Visual Computer (Springer Nature)}
 }
 ```

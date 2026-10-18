@@ -1,5 +1,6 @@
 # Milli: Continuous Spatiotemporal Manifold Engine for Token-Efficient Visual Intelligence
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23449694.svg)](https://doi.org/10.5281/zenodo.23449694)
 [![Paper PDF](https://img.shields.io/badge/Paper-PDF-red.svg)](milli_paper.pdf)
 [![LaTeX Source](https://img.shields.io/badge/LaTeX-Source-blue.svg)](milli_paper.tex)
 [![Full Paper Markdown](https://img.shields.io/badge/Paper-Markdown-green.svg)](PAPER.md)
@@ -9,6 +10,7 @@
 **Author:** Abdullah Al Raju  
 **Contact:** analystx.raju@gmail.com  
 **Classification:** Systems Architecture & Computer Vision  
+**Permanent DOI:** [10.5281/zenodo.23449694](https://doi.org/10.5281/zenodo.23449694)  
 **Publication Manuscript:** [`milli_paper.pdf`](milli_paper.pdf) | [`milli_paper.tex`](milli_paper.tex) | [`PAPER.md`](PAPER.md)  
 **Locked Benchmark Artifact:** `Video by theballsimulator [DecsCniIhKj].mp4`  
 **SHA-256 Hash:** `8fd2189bb4c7e9838756248bc99e9dba1e9826e585ac8403028a6efc51d0d08c`  

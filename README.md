@@ -32,6 +32,24 @@ Rather than ingesting redundant pixel matrices, downstream models receive contin
 
 ---
 
+## What Milli Sees: The 5-Panel Perception Pipeline
+
+Instead of passing dense pixel rasters into an attention matrix, Milli decomposes raw visual feeds into five orthogonal analytical layers in real time:
+
+![Milli Multi-Panel Perception Pipeline](assets/milli_eye_view_game_simulation.png)
+
+| Panel | Mathematical Representation | Operational Role in the Pipeline |
+| :--- | :--- | :--- |
+| **1. Sensor Input** | $F(\mathbf{x}, t) \in \mathbb{R}^{H \times W \times 3}$ | Raw incoming camera or simulation feed ($60\text{ Hz}$ continuous stream). |
+| **2. Static Base Manifold** | $\mathcal{S}(\mathbf{x}) \implies \frac{\partial \mathcal{S}}{\partial t} \equiv 0$ | Isolates time-invariant scene geometry (arena boundaries, static background cards, UI badges) emitted once ($\sim 164$ tokens). |
+| **3. Tangent Velocity Field** | $\mathbf{v}(\mathbf{x}, t) = [u(\mathbf{x}, t), v(\mathbf{x}, t)]^T$ | Closed-form Tikhonov optical transport momentum tracking moving bodies as continuous $C^2$ splines ($15\text{ tok/s}$). |
+| **4. Hessian Curvature** | $\det(\mathcal{H}_F(\mathbf{x})), \mathcal{L}_{vv} = 0$ | Directional second-derivative zero-crossings establishing sub-pixel edge boundaries ($\le 0.086\text{ px}$ error) without patch jitter. |
+| **5. Transient Residual** | $\delta(\mathbf{x}, t) = F(\mathbf{x}, t) - \mathcal{S}(\mathbf{x} - \int \mathbf{v})$ | Zero during smooth motion; spikes into localized bounding energy alerts upon collisions, wall bounces, and structural ruptures. |
+
+> **Demonstration Video:** An HD 60 FPS live recording demonstrating all five perception panels executing simultaneously in real time is available in [`assets/milli_seeing_recording.mp4`](assets/milli_seeing_recording.mp4). For transient fracture analysis, see [`assets/milli_eye_view_detachment.png`](assets/milli_eye_view_detachment.png).
+
+---
+
 ## 1. Measured Benchmarks on Locked 73.50s Artifact
 
 Milli was empirically evaluated on a real, locked, single-video validation sequence: a 73.50-second $720 \times 1280$ (portrait, 30.0 FPS, 2,205 frames) high-dynamic physics simulation (`Video by theballsimulator [DecsCniIhKj].mp4`, SHA-256: `8fd2189b...`).
@@ -136,6 +154,10 @@ Evaluating the initial benchmark segment ($t = 0.0\text{ s}$ to $15.0\text{ s}$,
 ## Repository Structure
 
 ```
+├── assets/               # Multi-panel perception visualizations & recordings
+│   ├── milli_eye_view_game_simulation.png
+│   ├── milli_eye_view_detachment.png
+│   └── milli_seeing_recording.mp4
 ├── milli_paper.pdf       # Compiled publication-grade PDF manuscript (14 pages)
 ├── milli_paper.tex       # Standalone LaTeX source document
 ├── references.bib        # BibTeX bibliography database

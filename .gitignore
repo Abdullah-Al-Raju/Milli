@@ -6,3 +6,7 @@ transient_*.png
 *.pyc
 __pycache__/
 leads/
+Journal recommendations*
+Gmail*
+cover_letter.txt
+milli_latex_source.*

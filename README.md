@@ -151,6 +151,16 @@ Evaluating the initial benchmark segment ($t = 0.0\text{ s}$ to $15.0\text{ s}$,
 
 ---
 
+## Milli Open-Source Ecosystem
+
+The core mathematical architecture of Milli is implemented and distributed across dedicated production repositories:
+
+* [**Milli-The-EYE**](https://github.com/Abdullah-Al-Raju/Milli-The-EYE): Official Developer SDK and continuous retinal perception runtime (`milli-eye`) for AI agents, computer use, and continuous visual streaming.
+* [**milli-scrapes**](https://github.com/Abdullah-Al-Raju/milli-scrapes): High-frequency in-loop browser scraping engine leveraging continuum visual diffing and reactive settling.
+* [**milli-agent**](https://github.com/Abdullah-Al-Raju/milli-agent): Lightweight agent execution runtime over native Chrome DevTools Protocol (CDP).
+
+---
+
 ## Repository Structure
 
 ```

@@ -331,6 +331,17 @@ On the verified 73.5-second benchmark sequence `Video by theballsimulator [DecsC
 
 ---
 
+## Declarations
+
+* **Funding:** The author declares that no funds, grants, or other financial support were received during the preparation of this manuscript.
+* **Competing Interests:** The author has no relevant financial or non-financial interests to disclose.
+* **Data Availability:** The benchmark video sequence and visual ground-truth collision catalog analyzed during the current study are deposited in the Zenodo repository, DOI: [10.5281/zenodo.23449694](https://doi.org/10.5281/zenodo.23449694).
+* **Code Availability:** All source code, WebGPU compute shaders, and benchmark evaluation scripts are openly available at [https://github.com/Abdullah-Al-Raju/Milli](https://github.com/Abdullah-Al-Raju/Milli).
+* **Ethics Approval:** Not applicable.
+* **Consent to Participate / Publish:** Not applicable.
+
+---
+
 ## Post-Rewrite Verification & Audit Table
 
 The following verification table checks every empirical, mathematical, and architectural claim in the rewritten paper against how it was computed and verified from the real workspace files.

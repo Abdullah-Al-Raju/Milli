@@ -177,6 +177,16 @@ The core mathematical architecture of Milli is implemented and distributed acros
 └── leads/                # Research outreach and partner notes
 ```
 
+## Milli Open-Source Ecosystem
+
+Milli's core mathematical manifold engine powers high-performance agentic and crawling architectures:
+- **[milli-scrapes](https://github.com/Abdullah-Al-Raju/milli-scrapes)**: Ultra-fast web scraper, crawler, and anti-bot stealth engine powered by Milli's optical retina. Outperforms Firecrawl (**41.1x faster**, 84% fewer tokens) and Crawl4AI on CrawlBench.
+- **[Milli-The-EYE](https://github.com/Abdullah-Al-Raju/Milli-The-EYE)**: Production-grade bionic retina SDK for autonomous GUI agents and Computer Use (0 MB GPU/VRAM).
+- **[milli-agent](https://github.com/Abdullah-Al-Raju/milli-agent)**: Ultra-lightweight in-loop CDP agent browser.
+- **Live Head-to-Head CrawlBench Report**: [`CRAWLBENCH_MILLI_UNIVERSAL_VS_FIRECRAWL.md`](CRAWLBENCH_MILLI_UNIVERSAL_VS_FIRECRAWL.md)
+
+---
+
 ## Citation
 
 If you find Milli useful in your research, please cite the preprint:
@@ -192,3 +202,4 @@ If you find Milli useful in your research, please cite the preprint:
   note={Under review at The Visual Computer (Springer Nature)}
 }
 ```
+

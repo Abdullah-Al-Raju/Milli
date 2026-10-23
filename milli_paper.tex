@@ -443,6 +443,32 @@ By treating continuous video as a discrete stack of flat pixel patches, frontier
 On the verified 73.5-second benchmark sequence \nolinkurl{Video by theballsimulator [DecsCniIhKj].mp4} (SHA-256: \texttt{8fd2189b\dots}), Milli reduces context consumption from \textbf{10,233,405 tokens} (raw ViT) and \textbf{19,092 tokens} (1-FPS decimation) to \textbf{1,627 tokens} in pure tracking mode and \textbf{5,517 tokens} in full resynchronization mode. Scored against a visual ground truth catalog established through direct manual frame inspection, Milli detects physical collision and rupture events where 1-FPS models fail with 0\% recall, establishing an analytically verified baseline for token-efficient temporal intelligence.
 
 %==============================================================================
+% DECLARATIONS
+%==============================================================================
+\section*{Declarations}
+
+\paragraph{Funding}
+The author declares that no funds, grants, or other financial support were received during the preparation of this manuscript.
+
+\paragraph{Competing Interests}
+The author has no relevant financial or non-financial interests to disclose.
+
+\paragraph{Data Availability}
+The benchmark video sequence and visual ground-truth collision catalog analyzed during the current study are deposited in the Zenodo repository, DOI: \url{https://doi.org/10.5281/zenodo.23449694}.
+
+\paragraph{Code Availability}
+All source code, WebGPU compute shaders, and benchmark evaluation scripts are openly available at \url{https://github.com/Abdullah-Al-Raju/Milli}.
+
+\paragraph{Ethics Approval}
+Not applicable.
+
+\paragraph{Consent to Participate}
+Not applicable.
+
+\paragraph{Consent for Publication}
+Not applicable.
+
+%==============================================================================
 % REFERENCES
 %==============================================================================
 \bibliographystyle{plainnat}

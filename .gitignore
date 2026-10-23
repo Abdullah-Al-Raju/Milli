@@ -10,3 +10,15 @@ Journal recommendations*
 Gmail*
 cover_letter.txt
 milli_latex_source.*
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+
+# Test and tooling caches
+.pytest_cache/

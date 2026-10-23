@@ -156,7 +156,7 @@ Evaluating the initial benchmark segment ($t = 0.0\text{ s}$ to $15.0\text{ s}$,
 The core mathematical architecture of Milli is implemented and distributed across dedicated production repositories:
 
 * [**Milli-The-EYE**](https://github.com/Abdullah-Al-Raju/Milli-The-EYE): Official Developer SDK and continuous retinal perception runtime (`milli-eye`) for AI agents, computer use, and continuous visual streaming.
-* [**milli-scrapes**](https://github.com/Abdullah-Al-Raju/milli-scrapes): High-frequency in-loop browser scraping engine leveraging continuum visual diffing and reactive settling.
+* [**milli-scrapes**](https://github.com/Abdullah-Al-Raju/milli-scrapes): High-frequency in-loop browser scraping engine leveraging continuum visual diffing and reactive settling. Outperformed Firecrawl by **$36.8\times$ on incremental scroll perception** with **$84.0\%$ fewer tokens** on CrawlBench.
 * [**milli-agent**](https://github.com/Abdullah-Al-Raju/milli-agent): Lightweight agent execution runtime over native Chrome DevTools Protocol (CDP).
 
 ---

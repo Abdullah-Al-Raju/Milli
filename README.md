@@ -1,6 +1,7 @@
 # Milli: Continuous Spatiotemporal Manifold Engine for Token-Efficient Visual Intelligence
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23449694.svg)](https://doi.org/10.5281/zenodo.23449694)
+[![License](https://img.shields.io/badge/License-Milli_Dual_License_(Research_Free_%7C_Commercial_Paid)-blue.svg)](LICENSE)
 [![Under Review](https://img.shields.io/badge/Under%20Review-The%20Visual%20Computer%20(Springer%20Nature)-blue.svg)](https://www.springer.com/journal/371)
 [![Paper PDF](https://img.shields.io/badge/Paper-PDF-red.svg)](milli_paper.pdf)
 [![LaTeX Source](https://img.shields.io/badge/LaTeX-Source-blue.svg)](milli_paper.tex)
@@ -228,4 +229,14 @@ If you find Milli useful in your research, please cite the preprint:
   note={Under review at The Visual Computer (Springer Nature)}
 }
 ```
+
+---
+
+## Licensing and Commercial Rights
+
+Milli is published under the **Milli Source-Available Dual License (Commercial & Research)**. See the complete legal agreement in [`LICENSE`](LICENSE).
+
+- **Non-Commercial / Academic Research Use (Free):** Perpetual, royalty-free license for personal study, academic research, university instruction, peer review, and benchmark validation.
+- **Commercial and Enterprise Use (Commercial License Required):** Any integration into commercial products, hosted vision services, autonomous agent frameworks, computer-use systems, or revenue-generating software requires a written Commercial License Agreement executed with the author.
+- **Commercial Licensing & Partnership Inquiries:** Contact Abdullah Al Raju at `analystx.raju@gmail.com`.
 
